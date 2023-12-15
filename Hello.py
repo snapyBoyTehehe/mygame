@@ -11,8 +11,6 @@ import streamlit as st
 
 #input('IF THIS WAS A MISTAKE THEN RESTART! ')
 
-
-
 Amount_Of_Tabs = 50000000000000000000000000
 amount_of_messages = 1
 
