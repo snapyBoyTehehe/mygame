@@ -11,7 +11,7 @@ import random
 import shutil
 import streamlit as st
 
-input('IF THIS WAS A MISTAKE THEN RESTART! ')
+#input('IF THIS WAS A MISTAKE THEN RESTART! ')
 
 
 
